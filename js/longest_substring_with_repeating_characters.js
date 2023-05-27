@@ -2,7 +2,7 @@
  * @param {string} s
  * @return {number}
  */
-const lengthOfLongestSubstring = function(s) {
+const lengthOfLongestSubstringWip = function(s) {
     let left = 0;
     const map = {};
     const splitString = s.split("");
@@ -21,29 +21,22 @@ const lengthOfLongestSubstring = function(s) {
         result = Math.max(result, right - left + 1);
     }
     return result;
-    // const { longest, current } = s.split("").reduce((acc, ch, index) => {
-    //     console.log('++ch', ch)
-    //     if (acc.used[ch]) {
-    //         console.log('acc.current.length', acc.current.length)
-    //         if (acc.longest < acc.current.length) {
-    //             acc.longest = acc.current.length;
-    //         }
-    //         console.log('acc.used', acc.used)
-    //         const index = acc.used[ch];
-    //         console.log('before slice', acc.current)
-    //         console.log('index', index)
-    //         acc.current = acc.current.slice(acc.current.indexOf(ch) + 1);
-    //        
-    //         console.log('after slice', acc.current)
-    //     }
-    //     acc.current.push(ch);
-    //     acc.used[ch] = index;
-    //     acc.longest = Math.max(acc.longest, acc.current + 1)
-    //     console.log('acc.current', acc.current)
-    //     console.log('acc.used', acc.used)
-    //     return acc;
-    // }, {longest: 0, current: [], used: {}})
-    // return Math.max(longest, current.length);
 };
 
-console.log(lengthOfLongestSubstring('asdqaswa'));
+const lengthOfLongestSubstringSubmitted = function(s) {
+    const { longest, current } = s.split("").reduce((acc, ch) => {
+        if (acc.used[ch]) {
+            if (acc.longest < acc.current.length) {
+                acc.longest = acc.current.length;
+            }
+            acc.current = acc.current.slice(acc.current.indexOf(ch) + 1);
+        }
+        acc.current.push(ch);
+        acc.used[ch] = true;
+        return acc;
+    }, {longest: 0, current: [], used: {}})
+    return Math.max(longest, current.length);
+};
+
+
+console.log(lengthOfLongestSubstringWip('asdqaswa'));

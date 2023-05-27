@@ -13,17 +13,7 @@ impl Solution {
                     left_point = index + 1;
                 }
             }
-            // match map.get(&*ch.to_string()) {
-            //     Some(index) => { 
-            //         dbg!(index);
-            //         if *index + 1 > left_point {
-            //             left_point = *index + 1;
-            //         }
-            //     },
-            //     None => left_point = left_point,
-            // }
             dbg!(left_point);
-            ;
             max = std::cmp::max(max, (i as i32 - left_point + 1));
         }
         max

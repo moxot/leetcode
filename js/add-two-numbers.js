@@ -29,7 +29,7 @@ const addTwoNumbers = function(l1, l2) {
             curr.val = curr.val % 10;
         }
         l1 = l1?.next;
-        l2 = l2?.next;  
+        l2 = l2?.next;
         if (Number.isFinite(l1?.val) || Number.isFinite(l2?.val) || carryOver > 0) {
             curr.next = new ListNode();
             curr = curr.next;
